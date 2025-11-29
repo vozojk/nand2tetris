@@ -14,19 +14,3 @@ tools/
 # Ignore OS junk
 .DS_Store
 Thumbs.db
-# Ignore the tools (Java, executables)
-tools/
-*.exe
-*.bat
-*.sh
-*.jar
-
-# Ignore generated output files
-*.out
-*.cmp
-*.tst   # Optional: You might want to keep test scripts, but usually you ignore them if they are default
-*.hack  # Ignore compiled binaries (keep source .asm)
-
-# Ignore OS junk
-.DS_Store
-Thumbs.db
