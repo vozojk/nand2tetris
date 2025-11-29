@@ -1,16 +1,5 @@
-# Ignore the tools (Java, executables)
-tools/
-*.exe
-*.bat
-*.sh
-*.jar
+# Ignore everything in the repository
+*
 
-# Ignore generated output files
-*.out
-*.cmp
-*.tst   # Optional: You might want to keep test scripts, but usually you ignore them if they are default
-*.hack  # Ignore compiled binaries (keep source .asm)
-
-# Ignore OS junk
-.DS_Store
-Thumbs.db
+# But keep this .gitignore file tracked so we can update it later
+!.gitignore
