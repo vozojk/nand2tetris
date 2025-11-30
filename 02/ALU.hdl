@@ -41,5 +41,181 @@ CHIP ALU {
         ng;      // if (out < 0)  equals 1, else 0
 
     PARTS:
-    //// Replace this comment with your code.
+    //negate and zero if flags set (x)
+    Not16(in[0]=zx, in[1]=zx, in[2]=zx, in[3]=zx, in[4]=zx, in[5]=zx,
+        in[6]=zx, in[7]=zx, in[8]=zx, in[9]=zx, in[10]=zx, in[11]=zx,
+        in[12]=zx, in[13]=zx, in[14]=zx, in[15]=zx,
+        out[0]=nzx0, out[1]=nzx1, out[2]=nzx2, out[3]=nzx3, out[4]=nzx4, out[5]=nzx5,
+        out[6]=nzx6, out[7]=nzx7, out[8]=nzx8, out[9]=nzx9, out[10]=nzxA, out[11]=nzxB,
+        out[12]=nzxC, out[13]=nzxD, out[14]=nzxE, out[15]=nzxF);
+
+
+    And16(a[0]=nzx0, a[1]=nzx1, a[2]=nzx2, a[3]=nzx3, 
+        a[4]=nzx4, a[5]=nzx5, a[6]=nzx6, a[7]=nzx7, 
+        a[8]=nzx8, a[9]=nzx9, a[10]=nzxA, a[11]=nzxB, 
+        a[12]=nzxC, a[13]=nzxD, a[14]=nzxE, a[15]=nzxF, 
+
+        b[0]=x[0], b[1]=x[1], b[2]=x[2], b[3]=x[3], 
+        b[4]=x[4], b[5]=x[5], b[6]=x[6], b[7]=x[7], 
+        b[8]=x[8], b[9]=x[9], b[10]=x[10], b[11]=x[11], 
+        b[12]=x[12], b[13]=x[13], b[14]=x[14], b[15]=x[15], 
+
+        out[0]=x00, out[1]=x10, out[2]=x20, out[3]=x30, 
+        out[4]=x40, out[5]=x50, out[6]=x60, out[7]=x70, 
+        out[8]=x80, out[9]=x90, out[10]=xA0, out[11]=xB0, 
+        out[12]=xC0, out[13]=xD0, out[14]=xE0, out[15]=xF0);
+
+    Xor (a=nx, b=x00, out=x01);
+    Xor (a=nx, b=x10, out=x11);
+    Xor (a=nx, b=x20, out=x21);
+    Xor (a=nx, b=x30, out=x31);
+    Xor (a=nx, b=x40, out=x41);
+    Xor (a=nx, b=x50, out=x51);
+    Xor (a=nx, b=x60, out=x61);
+    Xor (a=nx, b=x70, out=x71);
+    Xor (a=nx, b=x80, out=x81);
+    Xor (a=nx, b=x90, out=x91);
+    Xor (a=nx, b=xA0, out=xA1);
+    Xor (a=nx, b=xB0, out=xB1);
+    Xor (a=nx, b=xC0, out=xC1);
+    Xor (a=nx, b=xD0, out=xD1);
+    Xor (a=nx, b=xE0, out=xE1);
+    Xor (a=nx, b=xF0, out=xF1);
+
+    //negate and zero if flags set (y)
+    Not16(in[0]=zy, in[1]=zy, in[2]=zy, in[3]=zy, in[4]=zy, in[5]=zy,
+      in[6]=zy, in[7]=zy, in[8]=zy, in[9]=zy, in[10]=zy, in[11]=zy,
+      in[12]=zy, in[13]=zy, in[14]=zy, in[15]=zy,
+      out[0]=nzy0, out[1]=nzy1, out[2]=nzy2, out[3]=nzy3, out[4]=nzy4, out[5]=nzy5,
+      out[6]=nzy6, out[7]=nzy7, out[8]=nzy8, out[9]=nzy9, out[10]=nzyA, out[11]=nzyB,
+      out[12]=nzyC, out[13]=nzyD, out[14]=nzyE, out[15]=nzyF);
+
+        And16(a[0]=nzy0, a[1]=nzy1, a[2]=nzy2, a[3]=nzy3,
+            a[4]=nzy4, a[5]=nzy5, a[6]=nzy6, a[7]=nzy7,
+            a[8]=nzy8, a[9]=nzy9, a[10]=nzyA, a[11]=nzyB,
+            a[12]=nzyC, a[13]=nzyD, a[14]=nzyE, a[15]=nzyF,
+
+            b[0]=y[0], b[1]=y[1], b[2]=y[2], b[3]=y[3],
+            b[4]=y[4], b[5]=y[5], b[6]=y[6], b[7]=y[7],
+            b[8]=y[8], b[9]=y[9], b[10]=y[10], b[11]=y[11],
+            b[12]=y[12], b[13]=y[13], b[14]=y[14], b[15]=y[15],
+
+            out[0]=y00, out[1]=y10, out[2]=y20, out[3]=y30,
+            out[4]=y40, out[5]=y50, out[6]=y60, out[7]=y70,
+            out[8]=y80, out[9]=y90, out[10]=yA0, out[11]=yB0,
+            out[12]=yC0, out[13]=yD0, out[14]=yE0, out[15]=yF0);
+
+    Xor (a=ny, b=y00, out=y01);
+    Xor (a=ny, b=y10, out=y11);
+    Xor (a=ny, b=y20, out=y21);
+    Xor (a=ny, b=y30, out=y31);
+    Xor (a=ny, b=y40, out=y41);
+    Xor (a=ny, b=y50, out=y51);
+    Xor (a=ny, b=y60, out=y61);
+    Xor (a=ny, b=y70, out=y71);
+    Xor (a=ny, b=y80, out=y81);
+    Xor (a=ny, b=y90, out=y91);
+    Xor (a=ny, b=yA0, out=yA1);
+    Xor (a=ny, b=yB0, out=yB1);
+    Xor (a=ny, b=yC0, out=yC1);
+    Xor (a=ny, b=yD0, out=yD1);
+    Xor (a=ny, b=yE0, out=yE1);
+    Xor (a=ny, b=yF0, out=yF1);
+
+    //do x+y and x&y
+        And16(a[0]=x01, a[1]=x11, a[2]=x21, a[3]=x31,
+            a[4]=x41, a[5]=x51, a[6]=x61, a[7]=x71,
+            a[8]=x81, a[9]=x91, a[10]=xA1, a[11]=xB1,
+            a[12]=xC1, a[13]=xD1, a[14]=xE1, a[15]=xF1,
+
+            b[0]=y01, b[1]=y11, b[2]=y21, b[3]=y31,
+            b[4]=y41, b[5]=y51, b[6]=y61, b[7]=y71,
+            b[8]=y81, b[9]=y91, b[10]=yA1, b[11]=yB1,
+            b[12]=yC1, b[13]=yD1, b[14]=yE1, b[15]=yF1,
+
+            out[0]=and0, out[1]=and1, out[2]=and2, out[3]=and3,
+            out[4]=and4, out[5]=and5, out[6]=and6, out[7]=and7,
+            out[8]=and8, out[9]=and9, out[10]=andA, out[11]=andB,
+            out[12]=andC, out[13]=andD, out[14]=andE, out[15]=andF);
+    
+        // add x and y (after zx,nx,zy,ny transformations)
+        Add16(
+                a[0]=x01, a[1]=x11, a[2]=x21, a[3]=x31,
+                a[4]=x41, a[5]=x51, a[6]=x61, a[7]=x71,
+                a[8]=x81, a[9]=x91, a[10]=xA1, a[11]=xB1,
+                a[12]=xC1, a[13]=xD1, a[14]=xE1, a[15]=xF1,
+
+                b[0]=y01, b[1]=y11, b[2]=y21, b[3]=y31,
+                b[4]=y41, b[5]=y51, b[6]=y61, b[7]=y71,
+                b[8]=y81, b[9]=y91, b[10]=yA1, b[11]=yB1,
+                b[12]=yC1, b[13]=yD1, b[14]=yE1, b[15]=yF1,
+
+                out[0]=add0, out[1]=add1, out[2]=add2, out[3]=add3,
+                out[4]=add4, out[5]=add5, out[6]=add6, out[7]=add7,
+                out[8]=add8, out[9]=add9, out[10]=addA, out[11]=addB,
+                out[12]=addC, out[13]=addD, out[14]=addE, out[15]=addF);
+            // choose between bitwise AND (and0..andF) and ADD (add0..addF)
+            // when f=1 select ADD (b), when f=0 select AND (a)
+        Mux16(
+            a[0]=and0, a[1]=and1, a[2]=and2, a[3]=and3,
+            a[4]=and4, a[5]=and5, a[6]=and6, a[7]=and7,
+            a[8]=and8, a[9]=and9, a[10]=andA, a[11]=andB,
+            a[12]=andC, a[13]=andD, a[14]=andE, a[15]=andF,
+            b[0]=add0, b[1]=add1, b[2]=add2, b[3]=add3,
+            b[4]=add4, b[5]=add5, b[6]=add6, b[7]=add7,
+            b[8]=add8, b[9]=add9, b[10]=addA, b[11]=addB,
+            b[12]=addC, b[13]=addD, b[14]=addE, b[15]=addF,
+            sel=f,
+            out[0]=out10, out[1]=out11, out[2]=out12, out[3]=out13,
+            out[4]=out14, out[5]=out15, out[6]=out16, out[7]=out17,
+            out[8]=out18, out[9]=out19, out[10]=out1A, out[11]=out1B,
+            out[12]=out1C, out[13]=out1D, out[14]=out1E, out[15]=out1F
+        );
+        // apply final optional negation 'no' to out1 -> out using XORs
+        Xor (a=no, b=out10, out=dumbhdl0);
+        Xor (a=no, b=out11, out=dumbhdl1);
+        Xor (a=no, b=out12, out=dumbhdl2);
+        Xor (a=no, b=out13, out=dumbhdl3);
+        Xor (a=no, b=out14, out=dumbhdl4);
+        Xor (a=no, b=out15, out=dumbhdl5);
+        Xor (a=no, b=out16, out=dumbhdl6);
+        Xor (a=no, b=out17, out=dumbhdl7);
+        Xor (a=no, b=out18, out=dumbhdl8);
+        Xor (a=no, b=out19, out=dumbhdl9);
+        Xor (a=no, b=out1A, out=dumbhdlA);
+        Xor (a=no, b=out1B, out=dumbhdlB);
+        Xor (a=no, b=out1C, out=dumbhdlC);
+        Xor (a=no, b=out1D, out=dumbhdlD);
+        Xor (a=no, b=out1E, out=dumbhdlE);
+        Xor (a=no, b=out1F, out=dumbhdlF);
+
+        Xor (a=no, b=out10, out=out[0]);
+        Xor (a=no, b=out11, out=out[1]);
+        Xor (a=no, b=out12, out=out[2]);
+        Xor (a=no, b=out13, out=out[3]);
+        Xor (a=no, b=out14, out=out[4]);
+        Xor (a=no, b=out15, out=out[5]);
+        Xor (a=no, b=out16, out=out[6]);
+        Xor (a=no, b=out17, out=out[7]);
+        Xor (a=no, b=out18, out=out[8]);
+        Xor (a=no, b=out19, out=out[9]);
+        Xor (a=no, b=out1A, out=out[10]);
+        Xor (a=no, b=out1B, out=out[11]);
+        Xor (a=no, b=out1C, out=out[12]);
+        Xor (a=no, b=out1D, out=out[13]);
+        Xor (a=no, b=out1E, out=out[14]);
+        Xor (a=no, b=out1F, out=out[15]);
+
+        //set flags
+        Xor (a=no, b=out1F, out=ng);
+
+            Or8Way(in[0]=dumbhdl0, in[1]=dumbhdl1, in[2]=dumbhdl2, in[3]=dumbhdl3,
+                in[4]=dumbhdl4, in[5]=dumbhdl5, in[6]=dumbhdl6, in[7]=dumbhdl7,
+                out=or07);
+            Or8Way(in[0]=dumbhdl8, in[1]=dumbhdl9, in[2]=dumbhdlA, in[3]=dumbhdlB,
+                in[4]=dumbhdlC, in[5]=dumbhdlD, in[6]=dumbhdlE, in[7]=dumbhdlF,
+                out=or8F);
+
+        Or(a=or07, b=or8F, out=andall);
+        Not(in=andall, out=zr);
 }
