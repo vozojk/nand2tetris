@@ -9,19 +9,49 @@
 // the screen should be cleared.
 
 //// Replace this comment with your code.
-
-//turn screen black loop
 @SCREEN
 D=A
 @n
 M=D
-(LOOP)
+@n
+A=M
+
+(BLACK)
 @n
 A=M
 M=-1
 @n
 M=M+1
-@LOOP
-0;JMP
+@24576
+D=M
+@WHITE
+D;JGT
+@BLACK
+D;JEQ
+
+(WHITE)
+@n
+A=M
+M=0
+@n
+M=M+1
+@24576
+D=M
+@WHITE
+D;JGT
+@BLACK
+D;JEQ
 
 
+// @SCREEN
+// D=A
+// @n
+// M=D
+// (LOOP)
+// @n
+// A=M
+// M=-1
+// @n
+// M=M+1
+// @LOOP
+// 0;JMP
